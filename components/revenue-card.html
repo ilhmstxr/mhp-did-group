@@ -1,5 +1,21 @@
-<div class="kpi-card">
-    <div class="kpi-label">Total Pendapatan Bersih</div>
-    <div class="kpi-value">{total_revenue_fmt}</div>
-    <div class="kpi-sub">Pemasukan sewa keseluruhan</div>
+<div class="kpi-card" style="min-height: 120px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+        <div>
+            <div class="kpi-label">Total Pendapatan Bersih</div>
+            <div class="kpi-value" style="color: #111827;">{total_revenue_fmt}</div>
+        </div>
+        <div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(234, 58, 58, 0.06); border: 1.5px solid rgba(234, 58, 58, 0.15); border-radius: 12px; flex-shrink: 0; margin-left: 10px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA3A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path>
+                <path d="M4 6v12c0 1.1.9 2 2 2h14v-4"></path>
+                <path d="M18 12a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4v-6Z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="kpi-sub" style="color: #4B5563; margin-top: 10px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EA3A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Pemasukan sewa keseluruhan
+    </div>
 </div>

@@ -1,10 +1,19 @@
-<div class="glass-card" style="border-left: 4px solid #6366F1; margin-top: -10px;">
-    <p style="font-size: 13.5px; color: #CBD5E1; margin: 0; line-height: 1.5;">
-        💡 <b>Analisis Kesehatan Bisnis:</b> Dari total pelanggan terfilter, sebanyak <b>{total_new} pelanggan baru</b>
-        berhasil diakuisisi,
-        dan terdapat <b>{total_ret} pelanggan lama</b> yang melakukan transaksi ulang (Rasio Loyalitas Retensi:
-        <b>{ret_ratio:.1f}%</b>).
-        Rasio retensi yang stabil atau meningkat dari bulan ke bulan menunjukkan tingkat loyalitas pelanggan yang sehat
-        dan biaya pemasaran (CAC) yang efisien.
-    </p>
+<div class="glass-card" style="border-left: 4px solid #EA3A3A; margin-top: -10px;">
+    <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <div style="background: rgba(234, 58, 58, 0.06); padding: 8px; border-radius: 10px; border: 1px solid rgba(234, 58, 58, 0.15); display: flex; align-items: center; justify-content: center; margin-top: 2px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EA3A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </div>
+        <div>
+            <h4 style="margin: 0px 0px 6px 0px; color: #111827; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;">Analisis Kesehatan Bisnis</h4>
+            <p style="font-size: 13.5px; color: #4B5563; margin: 0; line-height: 1.6;">
+                Dari total pelanggan terfilter, sebanyak <b style="color: #EA3A3A;">{total_new} pelanggan baru</b> berhasil diakuisisi, 
+                dan terdapat <b style="color: #111827;">{total_ret} pelanggan lama</b> yang melakukan transaksi ulang (Rasio Loyalitas Retensi: <b style="color: #EA3A3A; font-weight: 700;">{ret_ratio:.1f}%</b>). 
+                Rasio retensi yang stabil atau meningkat dari bulan ke bulan menunjukkan tingkat loyalitas pelanggan yang sehat dan biaya pemasaran (CAC) yang efisien.
+            </p>
+        </div>
+    </div>
 </div>

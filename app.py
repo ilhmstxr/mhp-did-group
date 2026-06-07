@@ -165,7 +165,7 @@ except Exception as e:
 # ==========================================
 
 st.sidebar.markdown(
-    "<h2 style='text-align: center; color: #6366F1; font-weight: 800; margin-bottom: 24px;'>📊 CRM FILTERS</h2>",
+    "<h2 style='text-align: center; color: #EA3A3A; font-weight: 800; margin-bottom: 24px;'>CRM FILTERS</h2>",
     unsafe_allow_html=True
 )
 
@@ -301,7 +301,7 @@ with tab_unit:
             x=df_unit['Clean_Unit'],
             y=df_unit['Total_Revenue'],
             name="Pemasukan Bersih (IDR)",
-            marker_color="#6366F1",
+            marker_color="#EA3A3A",
             hovertemplate="Armada: %{x}<br>Pendapatan: Rp %{y:,.0f}<extra></extra>",
             opacity=0.85
         ),
@@ -315,8 +315,8 @@ with tab_unit:
             y=df_unit['Total_Days'],
             name="Durasi Sewa (Hari)",
             mode="lines+markers+text",
-            marker=dict(size=10, color="#38BDF8"),
-            line=dict(width=3, color="#38BDF8"),
+            marker=dict(size=10, color="#4B5563"),
+            line=dict(width=3, color="#4B5563"),
             text=df_unit['Total_Days'],
             textposition="top center",
             hovertemplate="Armada: %{x}<br>Total Sewa: %{y} Hari<extra></extra>"
@@ -326,22 +326,24 @@ with tab_unit:
     
     # Update layout properties
     fig_unit.update_layout(
-        title=dict(text="<b>Rasio ROI per Jenis Unit (Pendapatan vs Hari Terpakai)</b>", font=dict(size=16, color="#F8FAFC")),
+        title=dict(text="<b>Rasio ROI per Jenis Unit (Pendapatan vs Hari Terpakai)</b>", font=dict(size=16, color="#111827")),
+        font=dict(family="Outfit, sans-serif", color="#4B5563"),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         hovermode="x unified",
-        legend=dict(x=0.01, y=0.99, bgcolor="rgba(15,23,42,0.8)", bordercolor="rgba(255,255,255,0.1)", borderwidth=1),
+        hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="rgba(0,0,0,0.08)", font=dict(family="Outfit, sans-serif", size=13, color="#111827")),
+        legend=dict(x=0.01, y=0.99, bgcolor="rgba(255,255,255,0.9)", bordercolor="rgba(0,0,0,0.06)", borderwidth=1),
         margin=dict(l=40, r=40, t=60, b=40),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.05)", showline=True, linecolor="rgba(255,255,255,0.1)", tickfont=dict(color="#94A3B8")),
+        xaxis=dict(gridcolor="rgba(0,0,0,0.06)", showline=True, linecolor="rgba(0,0,0,0.08)", tickfont=dict(color="#4B5563")),
         yaxis=dict(
-            title=dict(text="Pemasukan Bersih (IDR)", font=dict(color="#6366F1")),
-            tickfont=dict(color="#94A3B8"),
-            gridcolor="rgba(255,255,255,0.05)",
+            title=dict(text="Pemasukan Bersih (IDR)", font=dict(color="#EA3A3A")),
+            tickfont=dict(color="#4B5563"),
+            gridcolor="rgba(0,0,0,0.06)",
             showgrid=True
         ),
         yaxis2=dict(
-            title=dict(text="Durasi Sewa (Hari)", font=dict(color="#38BDF8")),
-            tickfont=dict(color="#94A3B8"),
+            title=dict(text="Durasi Sewa (Hari)", font=dict(color="#4B5563")),
+            tickfont=dict(color="#4B5563"),
             showgrid=False
         )
     )
@@ -362,8 +364,9 @@ with tab_trend:
             x=df_trend['Bulan_Tahun'],
             y=df_trend['Total_Revenue'],
             name="Pendapatan Bulanan (IDR)",
-            marker_color="#4F46E5",
-            opacity=0.8
+            marker_color="#EA3A3A",
+            hovertemplate="Bulan: %{x}<br>Pendapatan: Rp %{y:,.0f}<extra></extra>",
+            opacity=0.85
         ),
         secondary_y=False
     )
@@ -374,20 +377,24 @@ with tab_trend:
             y=df_trend['Total_Days'],
             name="Durasi Rental Bulanan (Hari)",
             mode="lines+markers",
-            marker=dict(size=8, color="#06B6D4"),
-            line=dict(width=3, color="#06B6D4")
+            marker=dict(size=8, color="#4B5563"),
+            line=dict(width=3, color="#4B5563"),
+            hovertemplate="Bulan: %{x}<br>Durasi Rental: %{y} Hari<extra></extra>"
         ),
         secondary_y=True
     )
     
     fig_trend.update_layout(
-        title=dict(text="<b>Tren Pendapatan & Durasi Sewa Bulanan (DID Group)</b>", font=dict(size=16, color="#F8FAFC")),
+        title=dict(text="<b>Tren Pendapatan & Durasi Sewa Bulanan (DID Group)</b>", font=dict(size=16, color="#111827")),
+        font=dict(family="Outfit, sans-serif", color="#4B5563"),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
-        legend=dict(x=0.01, y=0.99, bgcolor="rgba(15,23,42,0.8)"),
-        xaxis=dict(gridcolor="rgba(255,255,255,0.05)", tickfont=dict(color="#94A3B8")),
-        yaxis=dict(title=dict(text="Pendapatan (IDR)", font=dict(color="#4F46E5")), tickfont=dict(color="#94A3B8"), gridcolor="rgba(255,255,255,0.05)"),
-        yaxis2=dict(title=dict(text="Total Hari Rental", font=dict(color="#06B6D4")), tickfont=dict(color="#94A3B8"))
+        hovermode="x unified",
+        hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="rgba(0,0,0,0.08)", font=dict(family="Outfit, sans-serif", size=13, color="#111827")),
+        legend=dict(x=0.01, y=0.99, bgcolor="rgba(255,255,255,0.9)", bordercolor="rgba(0,0,0,0.06)", borderwidth=1),
+        xaxis=dict(gridcolor="rgba(0,0,0,0.06)", tickfont=dict(color="#4B5563")),
+        yaxis=dict(title=dict(text="Pendapatan (IDR)", font=dict(color="#EA3A3A")), tickfont=dict(color="#4B5563"), gridcolor="rgba(0,0,0,0.06)"),
+        yaxis2=dict(title=dict(text="Total Hari Rental", font=dict(color="#4B5563")), tickfont=dict(color="#4B5563"))
     )
     
     st.plotly_chart(fig_trend, use_container_width=True)
@@ -451,7 +458,7 @@ with col_right:
         values='Total_Transaksi',
         names='Tujuan',
         hole=0.5,
-        color_discrete_sequence=['#6366F1', '#38BDF8', '#F59E0B'],
+        color_discrete_sequence=['#EA3A3A', '#4B5563', '#9CA3AF'],
         labels={'Total_Transaksi': 'Frekuensi', 'Tujuan': 'Destinasi'}
     )
     
@@ -464,7 +471,9 @@ with col_right:
     fig_donut.update_layout(
         title=None,
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5, font=dict(color="#94A3B8")),
+        font=dict(family="Outfit, sans-serif", color="#4B5563"),
+        legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5, font=dict(color="#4B5563")),
+        hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="rgba(0,0,0,0.08)", font=dict(family="Outfit, sans-serif", size=13, color="#111827")),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         margin=dict(l=20, r=20, t=10, b=40)
@@ -506,8 +515,8 @@ fig_ret.add_trace(go.Scatter(
     y=df_retention['New'],
     name="Pelanggan Baru (New Customers)",
     mode="lines+markers+text",
-    marker=dict(size=8, color="#6366F1"),
-    line=dict(width=3, color="#6366F1"),
+    marker=dict(size=8, color="#EA3A3A"),
+    line=dict(width=3, color="#EA3A3A"),
     text=df_retention['New'],
     textposition="top center",
     hovertemplate="Bulan: %{x}<br>Pelanggan Baru: %{y} orang<extra></extra>"
@@ -517,22 +526,24 @@ fig_ret.add_trace(go.Scatter(
     y=df_retention['Returning'],
     name="Pelanggan Lama (Returning Customers)",
     mode="lines+markers+text",
-    marker=dict(size=8, color="#38BDF8"),
-    line=dict(width=3, color="#38BDF8"),
+    marker=dict(size=8, color="#4B5563"),
+    line=dict(width=3, color="#4B5563"),
     text=df_retention['Returning'],
     textposition="top center",
     hovertemplate="Bulan: %{x}<br>Pelanggan Lama: %{y} orang<extra></extra>"
 ))
 
 fig_ret.update_layout(
-    title=dict(text="<b>Tren Perbandingan Pelanggan Baru vs Pelanggan Lama per Bulan</b>", font=dict(size=15, color="#F8FAFC")),
+    title=dict(text="<b>Tren Perbandingan Pelanggan Baru vs Pelanggan Lama per Bulan</b>", font=dict(size=15, color="#111827")),
+    font=dict(family="Outfit, sans-serif", color="#4B5563"),
     plot_bgcolor="rgba(0,0,0,0)",
     paper_bgcolor="rgba(0,0,0,0)",
     hovermode="x unified",
-    legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(color="#94A3B8")),
+    hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="rgba(0,0,0,0.08)", font=dict(family="Outfit, sans-serif", size=13, color="#111827")),
+    legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(color="#4B5563")),
     margin=dict(l=40, r=40, t=50, b=50),
-    xaxis=dict(gridcolor="rgba(255,255,255,0.05)", tickfont=dict(color="#94A3B8")),
-    yaxis=dict(gridcolor="rgba(255,255,255,0.05)", tickfont=dict(color="#94A3B8"), title="Jumlah Pelanggan Unik")
+    xaxis=dict(gridcolor="rgba(0,0,0,0.06)", tickfont=dict(color="#4B5563")),
+    yaxis=dict(gridcolor="rgba(0,0,0,0.06)", tickfont=dict(color="#4B5563"), title="Jumlah Pelanggan Unik")
 )
 
 # Display chart and context
@@ -595,7 +606,7 @@ with col_ins3:
 # ==========================================
 # 7. RAW DATA EXPLORER & EXPORT
 # ==========================================
-with st.expander("🔍 Lihat / Ekspor Data Transaksi Bersih"):
+with st.expander("Lihat / Ekspor Data Transaksi Bersih"):
     with open("components/style/visualize-7.html", "r", encoding="utf-8") as f:
         st.markdown(f.read(), unsafe_allow_html=True)
     st.dataframe(
@@ -619,7 +630,7 @@ with st.expander("🔍 Lihat / Ekspor Data Transaksi Bersih"):
     # CSV download trigger
     csv_data = df_filtered.to_csv(index=False).encode('utf-8')
     st.download_button(
-        label="📥 Unduh Data Terfilter (.csv)",
+        label="Unduh Data Terfilter (.csv)",
         data=csv_data,
         file_name="filtered_mhp_crm_data.csv",
         mime="text/csv",

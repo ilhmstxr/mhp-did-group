@@ -1,5 +1,22 @@
-<div class="kpi-card">
-    <div class="kpi-label">Client Terdaftar</div>
-    <div class="kpi-value">{unique_renters:,} Client</div>
-    <div class="kpi-sub">Jumlah penyewa unik</div>
+<div class="kpi-card" style="min-height: 120px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+        <div>
+            <div class="kpi-label">Client Terdaftar</div>
+            <div class="kpi-value" style="color: #111827;">{unique_renters:,} <span style="font-size: 16px; font-weight: 500; color: #EA3A3A;">Client</span></div>
+        </div>
+        <div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(234, 58, 58, 0.06); border: 1.5px solid rgba(234, 58, 58, 0.15); border-radius: 12px; flex-shrink: 0; margin-left: 10px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA3A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="kpi-sub" style="color: #4B5563; margin-top: 10px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#EA3A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 2px;">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Jumlah penyewa unik terfilter
+    </div>
 </div>
