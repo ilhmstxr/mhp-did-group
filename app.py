@@ -13,8 +13,16 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Initialize sidebar state
+if 'sidebar_collapsed' not in st.session_state:
+    st.session_state.sidebar_collapsed = False
+
 # Premium Custom CSS Injection for Glassmorphic & Modern Theme
 with open("components/style.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
+
+# Inject sidebar toggle floating button via JavaScript
+with open("components/sidebar-toggle.html", "r", encoding="utf-8") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
 

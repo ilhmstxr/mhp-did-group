@@ -1,0 +1,45 @@
+<div id="sidebar-toggle-btn" onclick="toggleSidebar()" title="Sembunyikan Sidebar">
+    &#9776;
+</div>
+<script>
+function toggleSidebar() {
+    // Find Streamlit's native collapse button and click it
+    const collapseBtn = window.parent.document.querySelector(
+        'button[data-testid="collapsedControl"], button[kind="header"][aria-expanded]'
+    );
+    if (collapseBtn) {
+        collapseBtn.click();
+    } else {
+        // Fallback: find the sidebar toggle button by aria-label
+        const btns = window.parent.document.querySelectorAll('button');
+        for (const btn of btns) {
+            const label = btn.getAttribute('aria-label') || '';
+            if (label.toLowerCase().includes('sidebar') || label.toLowerCase().includes('collapse')) {
+                btn.click();
+                break;
+            }
+        }
+    }
+    // Toggle icon & tooltip
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    if (toggleBtn) {
+        const isCollapsed = toggleBtn.classList.toggle('collapsed');
+        toggleBtn.title = isCollapsed ? 'Tampilkan Sidebar' : 'Sembunyikan Sidebar';
+    }
+}
+
+// Auto-detect sidebar state via MutationObserver
+setTimeout(() => {
+    const sidebar = window.parent.document.querySelector('section[data-testid="stSidebar"]');
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    if (sidebar && toggleBtn) {
+        const observer = new MutationObserver(() => {
+            const collapsed = sidebar.classList.contains('st-emotion-cache-collapsed') ||
+                              sidebar.getAttribute('aria-expanded') === 'false' ||
+                              sidebar.style.width === '0px';
+            toggleBtn.title = collapsed ? 'Tampilkan Sidebar' : 'Sembunyikan Sidebar';
+        });
+        observer.observe(sidebar, { attributes: true, attributeFilter: ['class', 'style', 'aria-expanded'] });
+    }
+}, 500);
+</script>
