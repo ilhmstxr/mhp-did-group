@@ -610,37 +610,3 @@ with col_ins2:
 with col_ins3:
     with open("components/insight-3.html", "r", encoding="utf-8") as f:
         st.markdown(f.read(), unsafe_allow_html=True)  # static card
-
-# ==========================================
-# 7. RAW DATA EXPLORER & EXPORT
-# ==========================================
-with st.expander("Lihat / Ekspor Data Transaksi Bersih"):
-    with open("components/style/visualize-7.html", "r", encoding="utf-8") as f:
-        st.markdown(f.read(), unsafe_allow_html=True)
-    st.dataframe(
-        df_filtered[[
-            'Clean_Unit', 'Bulan_Tahun', 'No.Pol', 'Clean_Penyewa', 'Clean_Status', 
-            'Tujuan', 'Durasi (Day)', 'Clean_Total', 'Clean_Harga', 'Clean_Fee_Driver', 'Clean_BBM', 'Clean_Tol_Parkir'
-        ]].rename(columns={
-            'Clean_Unit': 'Unit',
-            'Bulan_Tahun': 'Bulan-Tahun',
-            'Clean_Penyewa': 'Penyewa',
-            'Clean_Status': 'Status',
-            'Clean_Total': 'Total Bersih (IDR)',
-            'Clean_Harga': 'Harga Unit (IDR)',
-            'Clean_Fee_Driver': 'Fee Driver (IDR)',
-            'Clean_BBM': 'BBM (IDR)',
-            'Clean_Tol_Parkir': 'Tol & Parkir (IDR)'
-        }),
-        use_container_width=True
-    )
-    
-    # CSV download trigger
-    csv_data = df_filtered.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="Unduh Data Terfilter (.csv)",
-        data=csv_data,
-        file_name="filtered_mhp_crm_data.csv",
-        mime="text/csv",
-        help="Unduh data terfilter di atas dalam format CSV"
-    )
