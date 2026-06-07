@@ -290,7 +290,7 @@ with col4:
 with open("components/style/visualize-1.html", "r", encoding="utf-8") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
-tab_unit, tab_trend = st.tabs(["📊 Ringkasan per Unit", "📈 Tren Bulanan Performa"])
+tab_unit, tab_trend = st.tabs(["Ringkasan per Unit", "Tren Bulanan Performa"])
 
 with tab_unit:
     # Aggregation per Clean_Unit
@@ -438,13 +438,13 @@ with col_left:
         'Frekuensi': 'Frekuensi Sewa'
     })
     
-    # Draw interactive search/leaderboard table
+    # Draw interactive leaderboard table
     st.dataframe(
         df_display[['Nama Pelanggan', 'Frekuensi Sewa', 'Total Belanja', 'Rata-rata Durasi']],
         use_container_width=True,
         hide_index=True
     )
-    
+
     # VIP Retentive Insights Card
     with open("components/rentetive-insight-card.html", "r", encoding="utf-8") as f:
         st.markdown(f.read(), unsafe_allow_html=True)  # static card, no variables
@@ -490,7 +490,7 @@ with col_right:
     st.plotly_chart(fig_donut, use_container_width=True)
     
     # Display Destination Stats Table
-    df_tujuan_disp = df_tujuan.copy()
+    df_tujuan_disp = df_tujuan.copy().sort_values('Total_Transaksi', ascending=False)
     df_tujuan_disp['Total Pendapatan'] = df_tujuan_disp['Total_Pemasukan'].apply(format_rupiah)
     st.dataframe(
         df_tujuan_disp[['Tujuan', 'Total_Transaksi', 'Total Pendapatan']].rename(columns={'Total_Transaksi': 'Perjalanan'}),
