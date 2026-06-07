@@ -1,0 +1,118 @@
+<style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+    
+    html, body, [class*="css"], .stApp {
+        font-family: 'Outfit', sans-serif;
+    }
+    
+    /* Title Casing */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+    
+    /* Background adjustments */
+    .stApp {
+        background-color: #0F172A;
+        color: #F8FAFC;
+    }
+    
+    /* Sidebar adjustment */
+    section[data-testid="stSidebar"] {
+        background-color: #0B0F19 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Glassmorphic Cards */
+    div.element-container:has(div.metric-card) {
+        margin-bottom: 1rem;
+    }
+    
+    /* Custom container */
+    .glass-card {
+        background: rgba(30, 41, 59, 0.45);
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        margin-bottom: 20px;
+    }
+    
+    /* KPI Card hover effect */
+    .kpi-card {
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+        border-radius: 16px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        text-align: left;
+    }
+    
+    .kpi-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(99, 102, 241, 0.4);
+        box-shadow: 0 12px 20px -3px rgba(99, 102, 241, 0.15);
+    }
+
+    /* Subheader Styling */
+    .section-title {
+        color: #F8FAFC;
+        border-left: 4px solid #6366F1;
+        padding-left: 12px;
+        margin-top: 32px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    /* Metric label and values */
+    .kpi-label {
+        font-size: 13px;
+        color: #94A3B8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+    }
+    
+    .kpi-value {
+        font-size: 26px;
+        color: #F8FAFC;
+        font-weight: 700;
+        margin-top: 4px;
+    }
+    
+    .kpi-sub {
+        font-size: 12px;
+        color: #38BDF8;
+        margin-top: 6px;
+        font-weight: 500;
+    }
+    
+    /* Interactive badges */
+    .badge {
+        padding: 4px 8px;
+        border-radius: 9999px;
+        font-size: 11px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .badge-vip-diamond {
+        background-color: rgba(236, 72, 153, 0.15);
+        color: #F472B6;
+        border: 1px solid rgba(236, 72, 153, 0.3);
+    }
+    .badge-vip-gold {
+        background-color: rgba(245, 158, 11, 0.15);
+        color: #FBBF24;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .badge-regular {
+        background-color: rgba(148, 163, 184, 0.15);
+        color: #94A3B8;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+</style>

@@ -14,126 +14,9 @@ st.set_page_config(
 )
 
 # Premium Custom CSS Injection for Glassmorphic & Modern Theme
-st.markdown("""
-<style>
-    /* Google Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-    
-    html, body, [class*="css"], .stApp {
-        font-family: 'Outfit', sans-serif;
-    }
-    
-    /* Title Casing */
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-    }
-    
-    /* Background adjustments */
-    .stApp {
-        background-color: #0F172A;
-        color: #F8FAFC;
-    }
-    
-    /* Sidebar adjustment */
-    section[data-testid="stSidebar"] {
-        background-color: #0B0F19 !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    /* Glassmorphic Cards */
-    div.element-container:has(div.metric-card) {
-        margin-bottom: 1rem;
-    }
-    
-    /* Custom container */
-    .glass-card {
-        background: rgba(30, 41, 59, 0.45);
-        border-radius: 16px;
-        padding: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(5px);
-        margin-bottom: 20px;
-    }
-    
-    /* KPI Card hover effect */
-    .kpi-card {
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
-        border-radius: 16px;
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        text-align: left;
-    }
-    
-    .kpi-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(99, 102, 241, 0.4);
-        box-shadow: 0 12px 20px -3px rgba(99, 102, 241, 0.15);
-    }
+with open("components/style.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
-    /* Subheader Styling */
-    .section-title {
-        color: #F8FAFC;
-        border-left: 4px solid #6366F1;
-        padding-left: 12px;
-        margin-top: 32px;
-        margin-bottom: 16px;
-        font-weight: 600;
-        font-size: 20px;
-    }
-    
-    /* Metric label and values */
-    .kpi-label {
-        font-size: 13px;
-        color: #94A3B8;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 600;
-    }
-    
-    .kpi-value {
-        font-size: 26px;
-        color: #F8FAFC;
-        font-weight: 700;
-        margin-top: 4px;
-    }
-    
-    .kpi-sub {
-        font-size: 12px;
-        color: #38BDF8;
-        margin-top: 6px;
-        font-weight: 500;
-    }
-    
-    /* Interactive badges */
-    .badge {
-        padding: 4px 8px;
-        border-radius: 9999px;
-        font-size: 11px;
-        font-weight: 600;
-        display: inline-block;
-    }
-    .badge-vip-diamond {
-        background-color: rgba(236, 72, 153, 0.15);
-        color: #F472B6;
-        border: 1px solid rgba(236, 72, 153, 0.3);
-    }
-    .badge-vip-gold {
-        background-color: rgba(245, 158, 11, 0.15);
-        color: #FBBF24;
-        border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    .badge-regular {
-        background-color: rgba(148, 163, 184, 0.15);
-        color: #94A3B8;
-        border: 1px solid rgba(148, 163, 184, 0.3);
-    }
-</style>
-""", unsafe_allow_html=True)
 
 
 # ==========================================
@@ -339,18 +222,15 @@ if renter_search:
 
 col_logo, col_title = st.columns([1, 8])
 with col_logo:
-    st.markdown("<h1 style='font-size: 54px; margin-top: 5px; color: #6366F1; text-align: center;'>🏎️</h1>", unsafe_allow_html=True)
-with col_title:
-    st.markdown("""
-        <h1 style='margin-bottom: 0px; background: linear-gradient(to right, #6366F1, #38BDF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>
-            MHP CRM Analytics Portal
-        </h1>
-        <p style='color: #64748B; font-size: 16px; margin-top: 4px;'>
-            Dashboard Interaktif & CRM Insight untuk Analisis DID Group (Armada, Loyalitas, & Rute Perjalanan)
-        </p>
-    """, unsafe_allow_html=True)
+    with open("components/logo.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)
 
-st.markdown("<hr style='border-color: rgba(255,255,255,0.06); margin-bottom: 30px;' />", unsafe_allow_html=True)
+with col_title:
+    with open("components/title.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)
+
+with open("components/style/header-hero.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
 
 # ==========================================
@@ -371,43 +251,25 @@ def format_rupiah(value):
 
 # Revenue Card
 with col1:
-    st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">Total Pendapatan Bersih</div>
-            <div class="kpi-value">{format_rupiah(total_revenue)}</div>
-            <div class="kpi-sub">Pemasukan sewa keseluruhan</div>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/revenue-card.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read().format(total_revenue_fmt=format_rupiah(total_revenue)), unsafe_allow_html=True)
+
 
 # Transactions Card
 with col2:
-    st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">Jumlah Transaksi</div>
-            <div class="kpi-value">{total_transactions:,}</div>
-            <div class="kpi-sub">Total rental deal terekam</div>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/transaction-card.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read().format(total_transactions=total_transactions), unsafe_allow_html=True)
 
 # Rental Duration Card
 with col3:
-    st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">Total Hari Rental</div>
-            <div class="kpi-value">{total_days:,} Hari</div>
-            <div class="kpi-sub">Akumulasi durasi sewa armada</div>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/rental-duration-card.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read().format(total_days=int(total_days)), unsafe_allow_html=True)
 
 # Unique Renters Card
 with col4:
-    st.markdown(f"""
-        <div class="kpi-card">
-            <div class="kpi-label">Client Terdaftar</div>
-            <div class="kpi-value">{unique_renters:,} Client</div>
-            <div class="kpi-sub">Jumlah penyewa unik</div>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/unique-renters-card.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read().format(unique_renters=unique_renters), unsafe_allow_html=True)
+
 
 
 # ==========================================
@@ -417,7 +279,8 @@ with col4:
 # -----------------
 # VISUALISASI 1: Performa Unit & Utilisasi (Pendapatan vs. Hari Terpakai)
 # -----------------
-st.markdown("<div class='section-title'>1. Performa Unit & Utilisasi (Pendapatan vs. Hari Terpakai)</div>", unsafe_allow_html=True)
+with open("components/style/visualize-1.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
 tab_unit, tab_trend = st.tabs(["📊 Ringkasan per Unit", "📈 Tren Bulanan Performa"])
 
@@ -536,7 +399,8 @@ with tab_trend:
 col_left, col_right = st.columns([5, 4])
 
 with col_left:
-    st.markdown("<div class='section-title'>2. Loyalitas Pelanggan (Top Renters Leaderboard)</div>", unsafe_allow_html=True)
+    with open("components/style/visualize-2.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)
     
     # Aggregate client profiles
     df_renter = df_filtered.groupby('Clean_Penyewa').agg(
@@ -545,17 +409,6 @@ with col_left:
         Rata_Rata_Hari=('Durasi (Day)', 'mean')
     ).reset_index()
     
-    # Categorize VIP Levels based on business rules
-    def assign_vip_status(row):
-        freq = row['Frekuensi']
-        spend = row['Total_Belanja']
-        if freq >= 15 or spend >= 20000000:
-            return "👑 VIP Diamond"
-        elif freq >= 6 or spend >= 5000000:
-            return "⭐ VIP Gold"
-        return "Regular Client"
-        
-    df_renter['VIP_Level'] = df_renter.apply(assign_vip_status, axis=1)
     df_renter = df_renter.sort_values(by='Total_Belanja', ascending=False).reset_index(drop=True)
     
     # Format currency for displaying
@@ -567,31 +420,24 @@ with col_left:
     # Rename columns for presentation
     df_display = df_display.rename(columns={
         'Clean_Penyewa': 'Nama Pelanggan',
-        'Frekuensi': 'Frekuensi Sewa',
-        'VIP_Level': 'Tingkat Member'
+        'Frekuensi': 'Frekuensi Sewa'
     })
     
     # Draw interactive search/leaderboard table
     st.dataframe(
-        df_display[['Nama Pelanggan', 'Tingkat Member', 'Frekuensi Sewa', 'Total Belanja', 'Rata-rata Durasi']],
+        df_display[['Nama Pelanggan', 'Frekuensi Sewa', 'Total Belanja', 'Rata-rata Durasi']],
         use_container_width=True,
         hide_index=True
     )
     
     # VIP Retentive Insights Card
-    st.markdown("""
-        <div class="glass-card" style="margin-top: 10px; border-left: 4px solid #EC4899;">
-            <h4 style="margin: 0px 0px 8px 0px; color: #EC4899; font-size: 15px;">🔒 CRM Retention Strategy Checklist:</h4>
-            <ul style="margin: 0; padding-left: 20px; font-size: 13.5px; color: #E2E8F0; line-height: 1.5;">
-                <li>Kunci diskon loyalitas 5-10% otomatis untuk member dengan badge <b>👑 VIP Diamond</b>.</li>
-                <li>Gunakan <b>Prioritas Ketersediaan Unit</b> saat high season (Hari Raya / Natal) bagi Top Renter.</li>
-                <li>Tawarkan program retensi personal lewat chat CRM WhatsApp marketing.</li>
-            </ul>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/rentetive-insight-card.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)  # static card, no variables
+
 
 with col_right:
-    st.markdown("<div class='section-title'>3. Distribusi Tujuan Perjalanan</div>", unsafe_allow_html=True)
+    with open("components/style/visualize-3.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)
     
     # Aggregate destinations
     df_tujuan = df_filtered.groupby('Tujuan').agg(
@@ -640,7 +486,8 @@ with col_right:
 # -----------------
 # VISUALISASI 4: Analisis Retensi & Akuisisi (Time-Series Chart)
 # -----------------
-st.markdown("<div class='section-title'>4. Analisis Retensi & Akuisisi (Acquisition & Retention Trends)</div>", unsafe_allow_html=True)
+with open("components/style/visualize-4.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
 # Group monthly unique customers by type
 df_monthly_cust = df_filtered.groupby(['Chronological_Sort', 'Bulan_Tahun', 'Clean_Penyewa'])['Customer_Type'].first().reset_index()
@@ -696,22 +543,22 @@ st.plotly_chart(fig_ret, use_container_width=True)
 total_new = df_retention['New'].sum()
 total_ret = df_retention['Returning'].sum()
 ret_ratio = (total_ret / (total_new + total_ret) * 100) if (total_new + total_ret) > 0 else 0
-
-st.markdown(f"""
-    <div class="glass-card" style="margin-top:-10px; border-left: 4px solid #6366F1;">
-        <p style="font-size: 13.5px; color: #CBD5E1; margin: 0; line-height: 1.5;">
-            💡 <b>Analisis Kesehatan Bisnis:</b> Dari total pelanggan terfilter, sebanyak <b>{total_new} pelanggan baru</b> berhasil diakuisisi, 
-            dan terdapat <b>{total_ret} pelanggan lama</b> yang melakukan transaksi ulang (Rasio Loyalitas Retensi: <b>{ret_ratio:.1f}%</b>). 
-            Rasio retensi yang stabil atau meningkat dari bulan ke bulan menunjukkan tingkat loyalitas pelanggan yang sehat dan biaya pemasaran (CAC) yang efisien.
-        </p>
-    </div>
-""", unsafe_allow_html=True)
-
+    
+with open("components/CRM-context-card.html", "r", encoding="utf-8") as f:
+    st.markdown(
+        f.read().format(
+            total_new=int(total_new),
+            total_ret=int(total_ret),
+            ret_ratio=ret_ratio
+        ),
+        unsafe_allow_html=True
+    )
 
 # ==========================================
 # 6. CRM ACTIONABLE INSIGHTS PANEL
 # ==========================================
-st.markdown("<div class='section-title'>💡 Actionable CRM & Fleet Insights</div>", unsafe_allow_html=True)
+with open("components/style/visualize-6.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
 # Generate Dynamic Insights
 top_unit_rev = df_unit.sort_values(by='Total_Revenue', ascending=False).iloc[0]['Clean_Unit'] if not df_unit.empty else "N/A"
@@ -722,50 +569,35 @@ top_client_spend = df_renter.iloc[0]['Total_Belanja'] if not df_renter.empty els
 col_ins1, col_ins2, col_ins3 = st.columns(3)
 
 with col_ins1:
-    st.markdown(f"""
-        <div class="glass-card" style="border-top: 4px solid #6366F1; height: 100%;">
-            <h4 style="margin: 0px 0px 8px 0px; color: #6366F1;">📈 Optimasi Aset & ROI</h4>
-            <p style="font-size: 13.5px; color: #CBD5E1; line-height: 1.5; margin: 0;">
-                Unit <b>{top_unit_rev}</b> menghasilkan pemasukan tertinggi, sedangkan <b>{top_unit_util}</b> memiliki frekuensi hari terpakai paling padat.
-                <br><br>
-                <b>Rekomendasi Fleet Management:</b><br>
-                Pertimbangkan menambah unit <b>{top_unit_util}</b> untuk menghindari <i>opportunity loss</i>, karena tingkat utilisasinya yang tinggi.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/insight-1.html", "r", encoding="utf-8") as f:
+        st.markdown(
+            f.read().format(
+                top_unit_rev=top_unit_rev,
+                top_unit_util=top_unit_util
+            ),
+            unsafe_allow_html=True
+        )
 
 with col_ins2:
-    st.markdown(f"""
-        <div class="glass-card" style="border-top: 4px solid #EC4899; height: 100%;">
-            <h4 style="margin: 0px 0px 8px 0px; color: #EC4899;">👑 Strategi Retensi VIP</h4>
-            <p style="font-size: 13.5px; color: #CBD5E1; line-height: 1.5; margin: 0;">
-                Client <b>{top_client_name}</b> terdeteksi sebagai kontributor pendapatan terbesar dengan total belanja <b>{format_rupiah(top_client_spend)}</b>.
-                <br><br>
-                <b>Rekomendasi CRM Retention:</b><br>
-                Masukkan <b>{top_client_name}</b> ke dalam prioritas reservasi weekend dan kirimkan WhatsApp Greetings dengan voucher cashback terarah.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
+    with open("components/insight-2.html", "r", encoding="utf-8") as f:
+        st.markdown(
+            f.read().format(
+                top_client_name=top_client_name,
+                top_client_spend_fmt=format_rupiah(top_client_spend)
+            ),
+            unsafe_allow_html=True
+        )
 
 with col_ins3:
-    st.markdown("""
-        <div class="glass-card" style="border-top: 4px solid #38BDF8; height: 100%;">
-            <h4 style="margin: 0px 0px 8px 0px; color: #38BDF8;">🎯 Penjualan Paket Bundling</h4>
-            <p style="font-size: 13.5px; color: #CBD5E1; line-height: 1.5; margin: 0;">
-                Destinasi <b>JATIM</b> mendominasi total perjalanan (>95% transaksi). Destinasi ke luar provinsi (Jateng & Jakarta) memiliki margin tinggi namun volume sewa rendah.
-                <br><br>
-                <b>Rekomendasi Bundling:</b><br>
-                Buat promosi paket <i>"Include All (Driver+Tol+Fuel)"</i> khusus untuk rute luar JATIM untuk mendongkrak margin keuntungan.
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
-
+    with open("components/insight-3.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)  # static card
 
 # ==========================================
 # 7. RAW DATA EXPLORER & EXPORT
 # ==========================================
 with st.expander("🔍 Lihat / Ekspor Data Transaksi Bersih"):
-    st.markdown("<p style='color:#94A3B8; font-size:13px;'>Berikut adalah data transaksi yang telah melalui pipeline pembersihan (currency conversion dan normalisasi text):</p>", unsafe_allow_html=True)
+    with open("components/style/visualize-7.html", "r", encoding="utf-8") as f:
+        st.markdown(f.read(), unsafe_allow_html=True)
     st.dataframe(
         df_filtered[[
             'Clean_Unit', 'Bulan_Tahun', 'No.Pol', 'Clean_Penyewa', 'Clean_Status', 
