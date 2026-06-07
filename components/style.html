@@ -36,6 +36,68 @@
     section[data-testid="stSidebar"] {
         background-color: #FFFFFF !important;
         border-right: 1px solid var(--border-color);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Sidebar Toggle Button (Floating) */
+    #sidebar-toggle-btn {
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        z-index: 99999;
+        background: #FFFFFF;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        color: var(--text-primary);
+        font-size: 16px;
+        line-height: 1;
+    }
+    #sidebar-toggle-btn:hover {
+        background: var(--color-primary);
+        color: #FFFFFF;
+        border-color: var(--color-primary);
+        box-shadow: 0 6px 20px rgba(234, 58, 58, 0.3);
+        transform: scale(1.08);
+    }
+    #sidebar-toggle-btn.collapsed {
+        left: 14px;
+    }
+
+    /* Hide Streamlit's native sidebar collapse button */
+    button[data-testid="collapsedControl"] {
+        display: none !important;
+    }
+
+    /* Tooltip label on hover */
+    #sidebar-toggle-btn::after {
+        content: attr(title);
+        position: absolute;
+        left: 48px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #111827;
+        color: #FFFFFF;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 10px;
+        border-radius: 7px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        font-family: 'Outfit', sans-serif;
+        letter-spacing: 0.03em;
+    }
+    #sidebar-toggle-btn:hover::after {
+        opacity: 1;
     }
     
     /* Custom Scrollbar */
